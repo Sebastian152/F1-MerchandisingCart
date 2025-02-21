@@ -1,8 +1,32 @@
-# React + Vite
+ # F1 Merchandise Shopping Cart (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the F1 Merchandise Shopping Cart project, built using React! This application allows users to browse,
+select, and purchase merchandise from the official Formula One store.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Basical usage of React useState
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Clone the repository to your local machine:
+   ```
+   git clone https://github.com/Sebastian152/F1-MerchandisingCart.git
+   ```
+2. Navigate to the project directory:
+   ```
+   cd f1-merchandisingcart
+   ```
+3. Install dependencies:
+   ```
+   npm install
+   ```
+4. Start the development server:
+   ```
+   npm start
+   ```
+
+Now, you can access the application at `http://localhost:5173`.

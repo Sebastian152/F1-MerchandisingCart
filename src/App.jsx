@@ -1,196 +1,28 @@
+import { useEffect, useState } from "react"
 import Header from "./components/Header"
+import Product from "./components/Product"
+import { db } from "./data/db"
 
 function App() {
+  const [products, setProducts] = useState([])
+  
+  useEffect(() => {
+    setProducts(db)
+  }, [])
+
   return (
     <>
     <Header/>
     <main className="container-xl mt-5">
         <h2 className="text-center">Our best products</h2>
-
         <div className="row mt-5">
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch1.jpg" alt="product image" />
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Ferrari cap</h3>
-                    <p>Experience the luxury and style of Ferrari with this iconic cap. Perfect for any occasion.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100"
-                    >Add to cart</button>
-                </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch2.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Ferrari polo</h3>
-                    <p>Stay cool and look good in this Ferrari polo shirt. The perfect choice for any Ferrari enthusiast.</p>                    
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch3.jpg" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Ferrari jacket</h3>
-                    <p>Stay warm and stylish with this Ferrari jacket. A perfect choice for any Ferrari fan.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid flip" src="./public/img/merch4.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Redbull cap</h3>
-                    <p>Represent the energy drink that fuels champions with this Redbull cap. Perfect for any adventure or
-                    day out.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch5.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Redbull polo</h3>
-                    <p>Stay cool and comfortable with this Redbull polo shirt. The perfect choice for any fan
-                    looking to show off their racing passion.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch6.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Redbull jacket</h3>
-                    <p>Stay warm and dry with this Redbull jacket. A perfect choice for any outdoor adventure or winter
-                    day and racing enjoyers.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid flip" src="./public/img/merch7.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Mercedes cap</h3>
-                    <p>Experience the luxury and elegance of Mercedes with this cap. Perfect for any fan or driver looking
-                    to show off their love for the brand.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch8.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Mercedes polo</h3>
-                    <p>Stay cool and stylish with this Mercedes polo shirt. The perfect choice for any Mercedes enthusiast
-                    looking to show off their love for the iconic brand.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid flip" src="./public/img/merch9.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Mercedes helmet</h3>
-                    <p>Experience the thrill of racing with this Mercedes helmet. A perfect choice for any fan or driver
-                    looking to feel like part of the team.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid flip" src="./public/img/merch10.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Aston Martin cap</h3>
-                    <p>Experience the luxury and elegance of Aston Martin with this cap. Perfect for any fan or driver
-                    looking to show off their love for the brand.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid" src="./public/img/merch11.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Aston Martin bottle</h3>
-                    <p>Stay hydrated in style with this Aston Martin bottle. The perfect choice for any fan looking to
-                    show off their love for the iconic brand.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
-            <div className="col-md-6 col-lg-4 my-4 row align-items-center">
-                <div className="col-4">
-                    <img className="img-fluid flip" src="./public/img/merch12.avif" alt="product image"/>
-                </div>
-                <div className="col-8">
-                    <h3 className="text-black fs-4 fw-bold text-uppercase">Aston Martin helmet</h3>
-                    <p>Experience the thrill of racing with this Aston Martin helmet. A perfect choice for any fan or
-                    driver looking to feel like part of the team.</p>
-                    <p className="fw-black text-primary fs-3">$299</p>
-                    <button 
-                        type="button"
-                        className="btn btn-dark w-100 "
-                    >Add to cart</button>
-                </div>
-            </div>
+            {
+              products.map((product) => (
+                <Product
+                  product={product}
+                />
+              ))
+            }
         </div>
     </main>
 

@@ -1,5 +1,9 @@
 
 export default function Header( {cart} ) {
+
+    // Derivated state, this acts as a "dependant state" from another
+    const isEmpty = () => cart.length === 0
+
     return (
         <header className="py-5 header">
             <div className="container-xl">
@@ -17,7 +21,7 @@ export default function Header( {cart} ) {
 
                             <div id="cart" className="bg-white p-3">
                                 {
-                                    cart.length === 0 ? (
+                                    isEmpty() ? (
                                         <p className="text-center">The cart is empty</p>
                                     ) : (
                                     <table className="w-100 table">

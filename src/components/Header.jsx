@@ -1,17 +1,17 @@
+import { useMemo } from "react"
 
-export default function Header( {cart} ) {
+export default function Header( {cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart} ) {
 
     // Derivated state, this acts as a "dependant state" from another
-    const isEmpty = () => cart.length === 0
+    const isEmpty = useMemo(() => cart.length === 0, [cart]) //useMemo will optimize rendering
     // The reduce function iterates through the array and accumulates 
     // a final value by applying a function to each element.
     // It takes three arguments:
     // 1. total: The value that accumulates the result.
     // 2. product: The current element being processed.
     // 3. initialValue (optional): The initial value for the total.
-    const cartTotal = () => cart.reduce((total, product) => 
-        total + ( product.quantity * product.price
-    ), 0) // initialValue = 0
+    const cartTotal = useMemo( () => cart.reduce((total, product) => total + ( product.quantity * product.price ), 0),
+    [cart]) // initialValue = 0
     
     
 
@@ -32,7 +32,7 @@ export default function Header( {cart} ) {
 
                             <div id="cart" className="bg-white p-3">
                                 {
-                                isEmpty() ? (
+                                isEmpty ? (
                                     <p className="text-center">The cart is empty</p>
                                 ) : (
                                 <>
@@ -64,6 +64,7 @@ export default function Header( {cart} ) {
                                                         <button
                                                             type="button"
                                                             className="btn btn-dark"
+                                                            onClick={() => decreaseQuantity(product.id)}
                                                         >
                                                             -
                                                         </button>
@@ -71,6 +72,7 @@ export default function Header( {cart} ) {
                                                         <button
                                                             type="button"
                                                             className="btn btn-dark"
+                                                            onClick={() => increaseQuantity(product.id)}
                                                         >
                                                             +
                                                         </button>
@@ -79,6 +81,7 @@ export default function Header( {cart} ) {
                                                         <button
                                                             className="btn btn-danger"
                                                             type="button"
+                                                            onClick={() => removeFromCart(product.id)}
                                                         >
                                                             X
                                                         </button>
@@ -87,8 +90,11 @@ export default function Header( {cart} ) {
                                             ))}
                                         </tbody>
                                     </table>
-                                    <p className="text-end">Total: <span className="fw-bold">${cartTotal()}</span></p>
-                                    <button className="btn btn-dark w-100 mt-3 p-2">Clear cart</button>
+                                    <p className="text-end">Total: <span className="fw-bold">${cartTotal}</span></p>
+                                    <button 
+                                        className="btn btn-dark w-100 mt-3 p-2"
+                                        onClick={clearCart}
+                                    >Clear cart</button>
                                 </>
                                 )}
                             </div>

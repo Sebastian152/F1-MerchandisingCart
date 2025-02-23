@@ -6,10 +6,14 @@ import { db } from "./data/db"
 function App() {
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
+
+  const MAX_PRODUCTS_CART = 5
+  const MIN_PRODUCTS_CART = 1
   
   function addToCart(product) {
     const productExists = cart.findIndex(item => product.id === item.id)
     if(productExists >= 0) {
+      if (cart[productExists].quantity >= MAX_PRODUCTS_CART) return
       const updatedCart = [...cart]
       updatedCart[productExists].quantity++
       setCart(updatedCart)
@@ -17,6 +21,40 @@ function App() {
       product.quantity = 1
       setCart([...cart, product])
     }
+  }
+
+  function removeFromCart(id) {
+    setCart(prevCart => prevCart.filter(product => product.id !== id))
+  }
+
+  function increaseQuantity(id) {
+    const updatedCart = cart.map( product => {
+      if (product.id === id && product.quantity < MAX_PRODUCTS_CART) {
+        return {
+          ...product,
+          quantity: product.quantity + 1
+        }
+      }
+      return product
+    })
+    setCart(updatedCart)
+  }
+
+  function decreaseQuantity(id) {
+    const updatedCart = cart.map( product => {
+      if (product.id === id && product.quantity > MIN_PRODUCTS_CART) {
+        return {
+          ...product,
+          quantity: product.quantity - 1
+        }
+      }
+      return product
+    })
+    setCart(updatedCart)
+  }
+
+  function clearCart() {
+    setCart([])
   }
 
   useEffect(() => {
@@ -27,6 +65,10 @@ function App() {
     <>
     <Header
       cart={cart}
+      removeFromCart={removeFromCart}
+      increaseQuantity={increaseQuantity}
+      decreaseQuantity={decreaseQuantity}
+      clearCart={clearCart}
     />
     <main className="container-xl mt-5">
         <h2 className="text-center">Our best products</h2>
@@ -36,7 +78,6 @@ function App() {
                 <Product
                   key={product.id}
                   product={product}
-                  setCart={setCart}
                   addToCart={addToCart}
                 />
               ))

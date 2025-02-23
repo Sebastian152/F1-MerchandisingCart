@@ -1,5 +1,5 @@
 
-export default function Product( {product} ) {
+export default function Product( { product, addToCart } ) {
 
     const {id, name, image, description, price } = product
 
@@ -15,6 +15,7 @@ export default function Product( {product} ) {
                 <button 
                     type="button"
                     className="btn btn-dark w-100"
+                    onClick={() => addToCart(product)}
                 >Add to cart</button>
             </div>
         </div>

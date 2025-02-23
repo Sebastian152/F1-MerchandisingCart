@@ -5,21 +5,39 @@ import { db } from "./data/db"
 
 function App() {
   const [products, setProducts] = useState([])
+  const [cart, setCart] = useState([])
   
+  function addToCart(product) {
+    const productExists = cart.findIndex(item => product.id === item.id)
+    if(productExists >= 0) {
+      const updatedCart = [...cart]
+      updatedCart[productExists].quantity++
+      setCart(updatedCart)
+    } else {
+      product.quantity = 1
+      setCart([...cart, product])
+    }
+  }
+
   useEffect(() => {
     setProducts(db)
   }, [])
 
   return (
     <>
-    <Header/>
+    <Header
+      cart={cart}
+    />
     <main className="container-xl mt-5">
         <h2 className="text-center">Our best products</h2>
         <div className="row mt-5">
             {
               products.map((product) => (
                 <Product
+                  key={product.id}
                   product={product}
+                  setCart={setCart}
+                  addToCart={addToCart}
                 />
               ))
             }

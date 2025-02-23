@@ -30,7 +30,7 @@
   min-width: 350px;
   width: fit-content;
   top: 100%;
-  right: 0;
+  right: -2.4rem;
   left: unset;
   margin-left: unset;
   margin-right: unset;
@@ -168,6 +168,11 @@ h1, .h1 {
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 4.4rem;
+  }
+}
+@media (min-width: 414px) {
+  .cart:hover #cart {
+    right: 0;
   }
 }
 

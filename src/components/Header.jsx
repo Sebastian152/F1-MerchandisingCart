@@ -1,20 +1,4 @@
-import { useMemo } from "react"
-
-export default function Header( {cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart} ) {
-
-    // Derivated state, this acts as a "dependant state" from another
-    const isEmpty = useMemo(() => cart.length === 0, [cart]) //useMemo will optimize rendering
-    // The reduce function iterates through the array and accumulates 
-    // a final value by applying a function to each element.
-    // It takes three arguments:
-    // 1. total: The value that accumulates the result.
-    // 2. product: The current element being processed.
-    // 3. initialValue (optional): The initial value for the total.
-    const cartTotal = useMemo( () => cart.reduce((total, product) => total + ( product.quantity * product.price ), 0),
-    [cart]) // initialValue = 0
-    
-    
-
+export default function Header( {cart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpty, cartTotal} ) {
     return (
         <header className="py-5 header">
             <div className="container-xl">

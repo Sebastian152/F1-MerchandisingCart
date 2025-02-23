@@ -3,6 +3,17 @@ export default function Header( {cart} ) {
 
     // Derivated state, this acts as a "dependant state" from another
     const isEmpty = () => cart.length === 0
+    // The reduce function iterates through the array and accumulates 
+    // a final value by applying a function to each element.
+    // It takes three arguments:
+    // 1. total: The value that accumulates the result.
+    // 2. product: The current element being processed.
+    // 3. initialValue (optional): The initial value for the total.
+    const cartTotal = () => cart.reduce((total, product) => 
+        total + ( product.quantity * product.price
+    ), 0) // initialValue = 0
+    
+    
 
     return (
         <header className="py-5 header">
@@ -21,9 +32,10 @@ export default function Header( {cart} ) {
 
                             <div id="cart" className="bg-white p-3">
                                 {
-                                    isEmpty() ? (
-                                        <p className="text-center">The cart is empty</p>
-                                    ) : (
+                                isEmpty() ? (
+                                    <p className="text-center">The cart is empty</p>
+                                ) : (
+                                <>
                                     <table className="w-100 table">
                                         <thead>
                                             <tr>
@@ -75,10 +87,10 @@ export default function Header( {cart} ) {
                                             ))}
                                         </tbody>
                                     </table>
+                                    <p className="text-end">Total: <span className="fw-bold">${cartTotal()}</span></p>
+                                    <button className="btn btn-dark w-100 mt-3 p-2">Clear cart</button>
+                                </>
                                 )}
-
-                                <p className="text-end">Total: <span className="fw-bold">$899</span></p>
-                                <button className="btn btn-dark w-100 mt-3 p-2">Clear cart</button>
                             </div>
                         </div>
                     </nav>

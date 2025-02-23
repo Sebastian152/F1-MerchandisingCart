@@ -21,14 +21,14 @@ export default function Header( {cart, removeFromCart, increaseQuantity, decreas
                 <div className="row justify-content-center justify-content-md-between">
                     <div className="col-8 col-md-3">
                         <a href="index.html">
-                            <img className="img-fluid" src="./public/img/logo-F1.png" alt="logo image" />
+                            <img className="img-fluid" src="/img/logo-F1.png" alt="logo image" />
                         </a>
                     </div>
                     <nav className="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
                         <div 
                             className="cart"
                         >
-                            <img className="img-fluid" src="./public/img/cart.png" alt="shopping cart image" />
+                            <img className="img-fluid" src="/img/cart.png" alt="shopping cart image" />
 
                             <div id="cart" className="bg-white p-3">
                                 {

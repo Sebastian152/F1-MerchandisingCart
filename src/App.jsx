@@ -4,12 +4,16 @@ import Product from "./components/Product"
 import { db } from "./data/db"
 
 function App() {
-  const [products, setProducts] = useState([])
-  const [cart, setCart] = useState([])
+  const initialCart = () => {
+    const localStorageCart = localStorage.getItem('cart')
+    return localStorageCart ? JSON.parse(localStorageCart) : []
+  }
+  const [products] = useState(db)
+  const [cart, setCart] = useState(initialCart)
 
   const MAX_PRODUCTS_CART = 5
   const MIN_PRODUCTS_CART = 1
-  
+
   function addToCart(product) {
     const productExists = cart.findIndex(item => product.id === item.id)
     if(productExists >= 0) {
@@ -58,8 +62,8 @@ function App() {
   }
 
   useEffect(() => {
-    setProducts(db)
-  }, [])
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   return (
     <>

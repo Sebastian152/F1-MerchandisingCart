@@ -1,5 +1,11 @@
+import type { Product } from "../types"
 
-export default function Product( { product, addToCart } ) {
+type ProductProps = {
+    product : Product, 
+    addToCart : (item:Product) => void
+}
+
+export default function Product( { product , addToCart } : ProductProps) {
 
     const {id, name, image, description, price } = product
 

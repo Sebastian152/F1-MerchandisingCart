@@ -1,4 +1,5 @@
-export const db = [
+import type { Product } from "../types"
+export const db : Product[] = [
     {
         id: 1,
         name: 'Ferrari cap',

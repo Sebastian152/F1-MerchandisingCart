@@ -1,7 +1,6 @@
 import Header from "./components/Header"
 import Product from "./components/Product"
 import { useCart } from "./hooks/useCart"
-
 function App() {
   const { products, cart,addToCart, removeFromCart, decreaseQuantity, increaseQuantity, 
   clearCart, isEmpty, cartTotal} = useCart()

@@ -8,6 +8,7 @@ select, and purchase merchandise from the official Formula One store.
 - React
 - Basical usage of React useState and useEffect
 - Usage of custom hooks
+- Typescript
 - Bootstrap css v5.2.3
 
 ## Getting Started

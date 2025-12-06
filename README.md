@@ -1,7 +1,9 @@
- # F1 Merchandise Shopping Cart (React)
+ # F1 🏁 Merchandise Shopping Cart (React)
 
-Welcome to the F1 Merchandise Shopping Cart project, built using React! This application allows users to browse,
+Welcome to the **F1 Merchandise Shopping Cart** project, built using React! This application allows users to browse,
 select, and purchase merchandise from the official Formula One store.
+
+You can have a look at the project at: https://f1-cart-sebastian.netlify.app/
 
 ## Technologies Used
 
